@@ -121,11 +121,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         savedCities = locationModel.getSavedListOfCities()
         let loc = defaults.string(forKey: "location")
         if let currentLoc = loc {
-            print(currentLoc)
-            print("here")
             savedCities.insert(currentLoc, at: 0)
         }
-        
         if (selectedCity.count != 0 || savedCities.count != 0) {
             print(savedCities)
             if let index = savedCities.index(of: selectedCity) {

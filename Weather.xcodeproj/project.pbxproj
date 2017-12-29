@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D04F714A1FF5B9C7007BBFBB /* LocCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F71491FF5B9C7007BBFBB /* LocCellTableViewCell.swift */; };
 		D06E81551FB7CF7B00D7572B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E81541FB7CF7B00D7572B /* AppDelegate.swift */; };
 		D06E815A1FB7CF7B00D7572B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06E81581FB7CF7B00D7572B /* Main.storyboard */; };
 		D06E815D1FB7CF7B00D7572B /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D06E815B1FB7CF7B00D7572B /* Weather.xcdatamodeld */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D04F71491FF5B9C7007BBFBB /* LocCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocCellTableViewCell.swift; sourceTree = "<group>"; };
 		D06E81511FB7CF7B00D7572B /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06E81541FB7CF7B00D7572B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D06E81591FB7CF7B00D7572B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				D06E817D1FB7D91C00D7572B /* WeatherViewController.swift */,
 				D06E817F1FB7DF1A00D7572B /* PageViewController.swift */,
 				D06E81811FB817B100D7572B /* ViewController.swift */,
+				D04F71491FF5B9C7007BBFBB /* LocCellTableViewCell.swift */,
 			);
 			name = Controller;
 			path = "New Group";
@@ -190,6 +193,7 @@
 				D06E81781FB7D87300D7572B /* AddTableViewCell.swift in Sources */,
 				D06E815D1FB7CF7B00D7572B /* Weather.xcdatamodeld in Sources */,
 				D06E81821FB817B100D7572B /* ViewController.swift in Sources */,
+				D04F714A1FF5B9C7007BBFBB /* LocCellTableViewCell.swift in Sources */,
 				D06E81551FB7CF7B00D7572B /* AppDelegate.swift in Sources */,
 				D06E816D1FB7D08300D7572B /* Weather.swift in Sources */,
 				D06E817C1FB7D8DC00D7572B /* LocationViewController.swift in Sources */,
