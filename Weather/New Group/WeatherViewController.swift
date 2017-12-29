@@ -38,9 +38,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, UITabl
     var weatherModel = Weather()
     var city = ""
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        //  let m = MoreTableViewController()
-        //  m.moreViewDelegate = self
+        tableView1.delegate = self
+        tableView1.dataSource = self
+        tableView2.delegate = self
+        tableView2.dataSource = self
+        tableView1.alwaysBounceVertical = false
+        tableView1.backgroundColor = UIColor.clear
+        tableView2.alwaysBounceVertical = false
+        tableView2.backgroundColor = UIColor.clear
         print(city)
         if(city != "") {
             weatherModel.getWeather(byCity: city) { (allWeather) in
@@ -75,6 +82,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView1.delegate = self
+        tableView1.dataSource = self
+        tableView2.delegate = self
+        tableView2.dataSource = self
+        tableView1.alwaysBounceVertical = false
+        tableView1.backgroundColor = UIColor.clear
+        tableView2.alwaysBounceVertical = false
+        tableView2.backgroundColor = UIColor.clear
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()

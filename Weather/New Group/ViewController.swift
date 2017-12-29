@@ -27,6 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var leftCols = ["Sunrise", "Sunset", "Max Temp", "Min Temp"]
     var rightCols = ["Wind", "Clouds", "Pressure", "Humidity"]
     var leftVals = [String]()
+    var rightVals = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         tableView1.dataSource = self
         tableView2.delegate = self
         tableView2.dataSource = self
+        tableView1.alwaysBounceVertical = false
+        tableView1.backgroundColor = UIColor.clear
+        tableView2.alwaysBounceVertical = false
+        tableView2.backgroundColor = UIColor.clear
         weatherModel.getWeather(byCity: city) { (allWeather) in
             let temp = allWeather.value(forKeyPath: "main.temp") as? Double
             let name = allWeather.value(forKeyPath: "name") as? String
@@ -59,22 +64,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                     self.tempLbl.text = temperature + " ℃"
                     var maxTemp = "N/A"
                     var minTemp = "N/A"
+                    var wind = "N/A"
+                    var cloud = "N/A"
+                    var pressure = "N/A"
+                    var humidity = "N/A"
                     if let temp_max = allWeather.value(forKeyPath: "main.temp_max") as? Int {
-                       maxTemp = String(format:"%d", temp_max)
+                       maxTemp = String(temp_max) + " ℃"
                     }
                     if let temp_min = allWeather.value(forKeyPath: "main.temp_min") as? Int {
-                        minTemp = String(format:"%d", temp_min)
+                        minTemp = String(temp_min) + " ℃"
                     }
                     let sunrise = NSDate(timeIntervalSince1970: allWeather.value(forKeyPath: "sys.sunrise") as! TimeInterval)
                     let sunset = NSDate(timeIntervalSince1970: allWeather.value(forKeyPath: "sys.sunset") as! TimeInterval)
                     let dateFormatter = DateFormatter()
                     dateFormatter.timeZone = TimeZone.current
                     dateFormatter.dateFormat = "h:mm a"
+                    
+                    if let windSpeed = allWeather.value(forKeyPath: "wind.speed") as? Double {
+                        wind = String(windSpeed) + " mph"
+                    }
+                    
+                    if let cloudPerc = allWeather.value(forKeyPath: "clouds.all") as? Int {
+                        cloud = String(cloudPerc) + "%"
+                    }
+                    
+                    if let pressurePerc = allWeather.value(forKeyPath: "main.pressure") as? Int {
+                        pressure = String(pressurePerc) + " hPA"
+                    }
+                    
+                    if let humidityPerc = allWeather.value(forKeyPath: "main.humidity") as? Int {
+                        humidity = String(humidityPerc) + "%"
+                    }
 
                     self.leftVals.append(dateFormatter.string(from: sunrise as Date))
                     self.leftVals.append(dateFormatter.string(from: sunset as Date))
                     self.leftVals.append(maxTemp)
                     self.leftVals.append(minTemp)
+                    
+                    self.rightVals.append(wind)
+                    self.rightVals.append(cloud)
+                    self.rightVals.append(pressure)
+                    self.rightVals.append(humidity)
 
                     self.tableView1.reloadData()
                     self.tableView2.reloadData()
@@ -92,21 +122,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView1.alwaysBounceVertical = false
-        tableView2.alwaysBounceVertical = false
         if(tableView == tableView1) {
             let cell = tableView1.dequeueReusableCell(withIdentifier: "cell")
+            cell?.selectionStyle = UITableViewCellSelectionStyle.none
+            cell?.layer.backgroundColor = UIColor.clear.cgColor
+            cell?.contentView.backgroundColor = UIColor.clear
+            cell?.textLabel?.backgroundColor = UIColor.clear
+            cell?.detailTextLabel?.backgroundColor = UIColor.clear
             cell?.textLabel?.text = leftCols[indexPath.row]
             if(leftVals.count > 0){
                 cell?.detailTextLabel?.text = leftVals[indexPath.row]
             } else {
-                cell?.detailTextLabel?.text = "n/a"
+                cell?.detailTextLabel?.text = "N/A"
             }
             return cell!
         }
         let cell = tableView2.dequeueReusableCell(withIdentifier: "cell1")
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
+        cell?.layer.backgroundColor = UIColor.clear.cgColor
+        cell?.contentView.backgroundColor = UIColor.clear
         cell?.textLabel?.text = rightCols[indexPath.row]
-        cell?.detailTextLabel?.text = "sub"
+        cell?.textLabel?.backgroundColor = UIColor.clear
+        cell?.detailTextLabel?.backgroundColor = UIColor.clear
+        if(rightVals.count > 0){
+            cell?.detailTextLabel?.text = rightVals[indexPath.row]
+        } else {
+            cell?.detailTextLabel?.text = "N/A"
+        }
+        
         return cell!
     }
 }
