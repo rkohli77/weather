@@ -9,7 +9,23 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {
+class WeatherViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView1.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = "sunrise"
+        cell?.detailTextLabel?.text = "sub"
+        return cell!
+    }
+    
+    
+    @IBOutlet weak var tableView1: UITableView!
+    
+    @IBOutlet weak var tableView2: UITableView!
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var cloudsLbl: UILabel!

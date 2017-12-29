@@ -112,7 +112,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(savedCities.count)
         self.delegate = self
         self.dataSource = self
         locationManager.delegate = self
@@ -124,7 +123,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             savedCities.insert(currentLoc, at: 0)
         }
         if (selectedCity.count != 0 || savedCities.count != 0) {
-            print(savedCities)
             if let index = savedCities.index(of: selectedCity) {
                 currentInd = index
             }
@@ -195,9 +193,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                         if let locExists = loc {
                             if locExists == self.savedCities[0] {
                                 self.savedCities.remove(at: 0)
-                                print(self.savedCities)
                             }
-                            
                         }
                         self.defaults.set(city, forKey: "location")
                         self.updateArray(city: city)
@@ -216,8 +212,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             if let vc = vc {
                 setViewControllers([vc], direction: .forward, animated: true, completion: nil)
             }
-            print("update array")
-            print(savedCities)
         }
     }
     
