@@ -23,6 +23,8 @@
 		D06E817E1FB7D91C00D7572B /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E817D1FB7D91C00D7572B /* WeatherViewController.swift */; };
 		D06E81801FB7DF1A00D7572B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E817F1FB7DF1A00D7572B /* PageViewController.swift */; };
 		D06E81821FB817B100D7572B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E81811FB817B100D7572B /* ViewController.swift */; };
+		D0FCAE6F1FF75C38003BD3D0 /* HourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCAE6E1FF75C38003BD3D0 /* HourTableViewCell.swift */; };
+		D0FCAE711FF75C54003BD3D0 /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCAE701FF75C54003BD3D0 /* HourCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		D06E817D1FB7D91C00D7572B /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		D06E817F1FB7DF1A00D7572B /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D06E81811FB817B100D7572B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0FCAE6E1FF75C38003BD3D0 /* HourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTableViewCell.swift; sourceTree = "<group>"; };
+		D0FCAE701FF75C54003BD3D0 /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				D06E817F1FB7DF1A00D7572B /* PageViewController.swift */,
 				D06E81811FB817B100D7572B /* ViewController.swift */,
 				D04F71491FF5B9C7007BBFBB /* LocCellTableViewCell.swift */,
+				D0FCAE6E1FF75C38003BD3D0 /* HourTableViewCell.swift */,
+				D0FCAE701FF75C54003BD3D0 /* HourCollectionViewCell.swift */,
 			);
 			name = Controller;
 			path = "New Group";
@@ -189,6 +195,8 @@
 				D06E81761FB7D83800D7572B /* CitiesTableViewCell.swift in Sources */,
 				D06E817E1FB7D91C00D7572B /* WeatherViewController.swift in Sources */,
 				D06E81801FB7DF1A00D7572B /* PageViewController.swift in Sources */,
+				D0FCAE6F1FF75C38003BD3D0 /* HourTableViewCell.swift in Sources */,
+				D0FCAE711FF75C54003BD3D0 /* HourCollectionViewCell.swift in Sources */,
 				D06E816C1FB7D08300D7572B /* LocationModel.swift in Sources */,
 				D06E81781FB7D87300D7572B /* AddTableViewCell.swift in Sources */,
 				D06E815D1FB7CF7B00D7572B /* Weather.xcdatamodeld in Sources */,

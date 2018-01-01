@@ -26,9 +26,7 @@ class Weather {
                                 if (allWeather.object(forKey: "main") != nil) {
                                     completion(allWeather)
                                 }
-                                
                             }
-                            
                         }
                         catch {
                             print(error.localizedDescription)
@@ -38,7 +36,7 @@ class Weather {
                 else {
                     print(error?.localizedDescription ?? "error")
                 }
-                }.resume()
+            }.resume()
         }
     }
     
@@ -64,7 +62,7 @@ class Weather {
                 else {
                     print(error?.localizedDescription ?? "error")
                 }
-                }.resume()
+            }.resume()
         }
     }
     
@@ -76,6 +74,32 @@ class Weather {
                     if let data = data {
                         completion(data)
                     }
+                }
+            }).resume()
+        }
+    }
+    
+    func getWeatherThreeHour(byCity city:String, completion: @escaping (NSDictionary) -> ()){
+        let city = city.replacingOccurrences(of: " ", with: "")
+        let urlString = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&APPID=\(appId)&units=\(units)")
+        if let urlStr = urlString {
+            urlObj.dataTask(with: urlStr, completionHandler: { (data, response, error) in
+                if(error == nil){
+                    if(data != nil){
+                        do {
+                            let allWeather = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+                            if let allWeather = allWeather {
+                                if (allWeather.object(forKey: "list") != nil) {
+                                    completion(allWeather)
+                                }
+                            }
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+                else {
+                    print(error?.localizedDescription ?? "error")
                 }
             }).resume()
         }

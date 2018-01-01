@@ -48,7 +48,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, UITabl
         tableView1.backgroundColor = UIColor.clear
         tableView2.alwaysBounceVertical = false
         tableView2.backgroundColor = UIColor.clear
-        print(city)
         if(city != "") {
             weatherModel.getWeather(byCity: city) { (allWeather) in
                 let temp = allWeather.value(forKeyPath: "main.temp") as? Double
@@ -82,6 +81,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("weather")
         tableView1.delegate = self
         tableView1.dataSource = self
         tableView2.delegate = self
