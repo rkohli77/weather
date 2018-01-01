@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var weatherView: UIView!
     
+    @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var dateTimeLbl: UILabel!
     @IBOutlet weak var tempLbl: UILabel!
     @IBOutlet weak var weatherImg: UIImageView!
@@ -51,13 +52,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         tableView2.backgroundColor = UIColor.clear
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
-
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showWeather))
+        logoImg.addGestureRecognizer(tapGestureRecognizer)
+        logoImg.isUserInteractionEnabled = true
         
         weatherModel.getWeatherThreeHour(byCity: city) { (allWeather) in
             let aList = allWeather.object(forKey: "list") as! Array<NSDictionary>
             for object in aList {
                 let timeObj = NSDate(timeIntervalSince1970: object.object(forKey: "dt") as! TimeInterval)
-                
                 dateFormatter.dateFormat = "h a"
                 self.timeStrArray.append(dateFormatter.string(from: timeObj as Date))
                 let weatherStr = object.object(forKey: "main") as! NSDictionary
@@ -118,7 +121,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 }
             }
         }
-
+        
+    }
+    
+    @objc func showWeather() {
+        // if the tapped view is a UIImageView then set it to imageview
+        let url = URL(string: "https://www.theweathernetwork.com/ca")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -213,7 +222,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         self.rightVals.append(cloud)
         self.rightVals.append(pressure)
         self.rightVals.append(humidity)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -231,7 +240,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         cell.lblTemp.text = tempStrArray[indexPath.row]
         weatherModel.getWeatherImage(byIcon: imgStrArray[indexPath.row], completion: { (data) in
             DispatchQueue.main.async {
-               cell.imgWeather.image = UIImage(data: data)
+                cell.imgWeather.image = UIImage(data: data)
             }
         })
         return cell

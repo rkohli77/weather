@@ -427,6 +427,7 @@
                         <outlet property="cloudsLbl" destination="XvV-WE-U3O" id="WJi-di-CTg"/>
                         <outlet property="dateTimeLbl" destination="nS0-9z-fqc" id="8Ff-a1-QIF"/>
                         <outlet property="locationLbl" destination="2RW-XB-eoB" id="zUO-9G-Q90"/>
+                        <outlet property="logoImg" destination="Ngd-a3-Sml" id="8uY-kn-rBO"/>
                         <outlet property="tableView0" destination="ntY-fN-qfV" id="vuk-js-N0n"/>
                         <outlet property="tableView1" destination="bUe-AR-W3D" id="tE1-dB-F1J"/>
                         <outlet property="tableView2" destination="eak-Qk-LIX" id="Mt3-gC-3ah"/>
