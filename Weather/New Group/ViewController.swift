@@ -80,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                         self.weatherModel.getWeatherImage(byIcon: imageIcon, completion: { (data) in
                             DispatchQueue.main.async {
                                 self.weatherImg?.image = UIImage(data: data)
-                                self.cloudsLbl.text = desc
+                                self.cloudsLbl.text = desc.capitalized
                                 self.locationLbl.text = name
                             }
                         })
