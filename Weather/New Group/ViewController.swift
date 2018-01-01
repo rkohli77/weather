@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     @IBOutlet weak var tableView2: UITableView!
     @IBOutlet weak var weatherView: UIView!
     
+    @IBOutlet weak var dateTimeLbl: UILabel!
     @IBOutlet weak var tempLbl: UILabel!
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var cloudsLbl: UILabel!
@@ -48,12 +49,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         tableView1.backgroundColor = UIColor.clear
         tableView2.alwaysBounceVertical = false
         tableView2.backgroundColor = UIColor.clear
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+
+        
         weatherModel.getWeatherThreeHour(byCity: city) { (allWeather) in
             let aList = allWeather.object(forKey: "list") as! Array<NSDictionary>
             for object in aList {
                 let timeObj = NSDate(timeIntervalSince1970: object.object(forKey: "dt") as! TimeInterval)
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = TimeZone.current
+                
                 dateFormatter.dateFormat = "h a"
                 self.timeStrArray.append(dateFormatter.string(from: timeObj as Date))
                 let weatherStr = object.object(forKey: "main") as! NSDictionary
@@ -88,9 +92,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 }
                 DispatchQueue.main.async {
                     self.tempLbl.text = temperature + " ℃"
+                    dateFormatter.dateFormat = "E, MMM dd, h:mm a"
+                    //dateFormatter.dateStyle = .full
+                    self.dateTimeLbl.text = dateFormatter.string(from: Date())
                     self.generateValues(allWeather: allWeather)
                     self.tableView1.reloadData()
                     self.tableView2.reloadData()
+                    
+                    let bottomBorder = CALayer()
+                    let width = CGFloat(1.0)
+                    bottomBorder.borderColor = UIColor.lightGray.cgColor
+                    bottomBorder.frame = CGRect(x: 0, y: self.tableView0.frame.size.height - width, width:  self.tableView0.frame.size.width, height: self.tableView0.frame.size.height)
+                    
+                    bottomBorder.borderWidth = width
+                    
+                    let topBorder = CALayer()
+                    topBorder.frame = CGRect(x: 0, y: 0, width: self.tableView0.frame.size.width, height: self.tableView0.frame.size.height)
+                    topBorder.borderColor = UIColor.lightGray.cgColor
+                    topBorder.borderWidth = width
+                    
+                    self.tableView0.layer.addSublayer(bottomBorder)
+                    self.tableView0.layer.addSublayer(topBorder)
+                    self.tableView0.layer.masksToBounds = true
                     self.tableView0.reloadData()
                 }
             }

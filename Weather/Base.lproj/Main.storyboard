@@ -211,6 +211,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS0-9z-fqc">
+                                        <rect key="frame" x="138" y="179" width="219" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -418,6 +425,7 @@
                     </view>
                     <connections>
                         <outlet property="cloudsLbl" destination="XvV-WE-U3O" id="WJi-di-CTg"/>
+                        <outlet property="dateTimeLbl" destination="nS0-9z-fqc" id="8Ff-a1-QIF"/>
                         <outlet property="locationLbl" destination="2RW-XB-eoB" id="zUO-9G-Q90"/>
                         <outlet property="tableView0" destination="ntY-fN-qfV" id="vuk-js-N0n"/>
                         <outlet property="tableView1" destination="bUe-AR-W3D" id="tE1-dB-F1J"/>
