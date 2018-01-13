@@ -16,4 +16,4 @@ This app shows a 7-days weather forecast for a city.
 - Allows the user to delete a city
 
 
-![ScreenShot](https://github.com/rkohli77/weather/blob/master/weather.gif)
+![ScreenShot](https://github.com/rkohli77/weather/blob/master/resize.gif)
