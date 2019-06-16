@@ -32,7 +32,7 @@ class LocationModel {
                             print(error?.localizedDescription ?? "Error Ocurred")
                         } else {
                             if data != nil {
-                                let convertToString = String(data: data!, encoding: String.Encoding.utf8) as String!
+                                let convertToString = String(data: data!, encoding: String.Encoding.utf8)
                                 let str1 = convertToString?.dropFirst(2)
                                 let str2 = str1?.dropLast(2)
                                 if let data = str2?.data(using: String.Encoding.utf8) {

@@ -68,7 +68,7 @@ class MoreTableViewController: UITableViewController, LocationViewProtocol {
         
         var cell: CitiesTableViewCell!
         if (indexPath.section == 0) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CitiesTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CitiesTableViewCell
             let city = savedCities[indexPath.row]
             let cityOnly = city.components(separatedBy: ",")
             cell.cityLbl.text = cityOnly[0]
