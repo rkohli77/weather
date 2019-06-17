@@ -169,7 +169,7 @@ class MoreTableViewController: UITableViewController, LocationViewProtocol {
     }
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             locationModel.deleteCityFromDb(city: savedCities[indexPath.row])
             savedCities.remove(at: indexPath.row)

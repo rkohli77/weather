@@ -127,7 +127,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     @objc func showWeather() {
         // if the tapped view is a UIImageView then set it to imageview
         let url = URL(string: "https://www.theweathernetwork.com/ca")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,12 +142,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView0.dequeueReusableCell(withIdentifier: "hourCell") as? HourTableViewCell
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
+        cell?.selectionStyle = UITableViewCell.SelectionStyle.none
         cell?.layer.backgroundColor = UIColor.clear.cgColor
         cell?.contentView.backgroundColor = UIColor.clear
         if(tableView == tableView1) {
             let cell = tableView1.dequeueReusableCell(withIdentifier: "cell")
-            cell?.selectionStyle = UITableViewCellSelectionStyle.none
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
             cell?.layer.backgroundColor = UIColor.clear.cgColor
             cell?.contentView.backgroundColor = UIColor.clear
             cell?.textLabel?.backgroundColor = UIColor.clear
@@ -162,7 +162,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         }
         if(tableView == tableView2) {
             let cell = tableView2.dequeueReusableCell(withIdentifier: "cell1")
-            cell?.selectionStyle = UITableViewCellSelectionStyle.none
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
             cell?.layer.backgroundColor = UIColor.clear.cgColor
             cell?.contentView.backgroundColor = UIColor.clear
             cell?.textLabel?.text = rightCols[indexPath.row]
@@ -249,4 +249,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

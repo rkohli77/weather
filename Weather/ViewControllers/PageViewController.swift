@@ -45,7 +45,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                 selCity = currentPageViewController.city.replacingOccurrences(of: " ", with: "")
             }
         }
-        if let currentIndex = savedCities.index(of: selCity) {
+        if let currentIndex = savedCities.firstIndex(of: selCity) {
             if currentIndex == 0 {return nil }
             return viewControllerAtIndex(index: currentIndex - 1)
         }
@@ -57,7 +57,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         if let currentPageViewController = viewController as? ViewController {
             selCity = currentPageViewController.city.replacingOccurrences(of: " ", with: "")
         }
-        if let currentIndex = savedCities.index(of: selCity) {
+        if let currentIndex = savedCities.firstIndex(of: selCity) {
             if currentIndex == savedCities.count - 1 {return nil }
             return viewControllerAtIndex(index: currentIndex + 1)
         }
@@ -82,10 +82,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         if selectedCity.count != 0 {
-            return savedCities.index(of: selectedCity) ?? 0
+            return savedCities.firstIndex(of: selectedCity) ?? 0
         }
         guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = VCArr.index(of: firstViewController) else {
+            let firstViewControllerIndex = VCArr.firstIndex(of: firstViewController) else {
                 return 0
         }
         return firstViewControllerIndex
@@ -123,7 +123,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             savedCities.insert(currentLoc, at: 0)
         }
         if (selectedCity.count != 0 || savedCities.count != 0) {
-            if let index = savedCities.index(of: selectedCity) {
+            if let index = savedCities.firstIndex(of: selectedCity) {
                 currentInd = index
             }
             let vc = viewControllerAtIndex(index: currentInd)
@@ -153,6 +153,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             case .authorizedAlways, .authorizedWhenInUse:
                 locationManager.distanceFilter = 100
                 locationManager.startUpdatingLocation()
+            @unknown default:
+                print("default")
             }
         }
         
